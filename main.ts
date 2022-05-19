@@ -1,26 +1,24 @@
 enum RadioMessage {
-    message1 = 49434,
     right = 32391,
     left = 14947,
     startstop = 5388,
-    stopstart = 20043
 }
+radio.setGroup(21)
 input.onButtonPressed(Button.A, function () {
-    radio.sendMessage(RadioMessage.right)
+    radio.sendNumber(RadioMessage.left)
+    basic.showString("L")
+    basic.pause(2000)
+    basic.showIcon(IconNames.Triangle)
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.sendMessage(RadioMessage.stopstart)
+    radio.sendNumber(RadioMessage.startstop)
+    basic.showString("T")
+    basic.pause(2000)
+    basic.showIcon(IconNames.Triangle)
 })
 input.onButtonPressed(Button.B, function () {
-    radio.sendMessage(RadioMessage.left)
-})
-radio.setGroup(3)
-basic.forever(function () {
-    basic.showLeds(`
-        . . . . .
-        . # . # .
-        . . . . .
-        # . . . #
-        . # # # .
-        `)
+    radio.sendNumber(RadioMessage.right)
+    basic.showString("R")
+    basic.pause(2000)
+    basic.showIcon(IconNames.Triangle)
 })
